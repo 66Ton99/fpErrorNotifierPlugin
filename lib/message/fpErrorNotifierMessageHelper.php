@@ -3,32 +3,32 @@
 /**
  *
  * @package    fpErrorNotifier
- * @subpackage message 
- * 
+ * @subpackage message
+ *
  * @author     Maksim Kotlyar <mkotlar@ukr.net>
  */
 class fpErrorNotifierMessageHelper
 {
 
   /**
-   * 
+   *
    * @param Exception $e
-   * 
+   *
    * @return array
    */
   public function formatException(Exception $e)
   {
     return array(
-      'class' => $e instanceof ErrorException?fpErrorNotifierErrorCode::getName($e->getSeverity()):get_class($e), 
-      'code' => $e->getCode(), 'severity' => $e instanceof ErrorException?$e->getSeverity():'null', 
-      'message' => $e->getMessage(), 'file' => "File: {$e->getFile()}, Line: {$e->getLine()}", 
+      'class' => $e instanceof ErrorException?fpErrorNotifierErrorCode::getName($e->getSeverity()):get_class($e),
+      'code' => $e->getCode(), 'severity' => $e instanceof ErrorException?$e->getSeverity():'null',
+      'message' => $e->getMessage(), 'file' => "File: {$e->getFile()}, Line: {$e->getLine()}",
       'trace' => $e->getTraceAsString());
   }
 
   /**
-   * 
+   *
    * @param string $title
-   * 
+   *
    * @return array
    */
   public function formatSummary($title)
@@ -42,13 +42,13 @@ class fpErrorNotifierMessageHelper
     } else {
       $uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     }
-    return array('subject' => $title, 'uri' => $uri, 'environment' => sfConfig::get('sf_environment', 'undefined'), 
-      'module' => $context->getModuleName(), 'action' => $context->getActionName(), 
+    return array('subject' => $title, 'uri' => $uri, 'environment' => sfConfig::get('sf_environment', 'undefined'),
+      'module' => $context->getModuleName(), 'action' => $context->getActionName(),
       'generated at' => date('H:i:s j F Y'));
   }
 
   /**
-   * 
+   *
    * @return array
    */
   public function formatServer()
@@ -57,12 +57,12 @@ class fpErrorNotifierMessageHelper
       'server'  => $this->dump($_SERVER),
       'session' => isset($_SESSION) ? $this->dump($_SESSION) : null,
       'post'    => isset($_POST)    ? $this->dump($_POST)    : null,
-      'ccookie' => isset($_COOKIE)  ? $this->dump($_COOKIE)  : null,
+      'cookie'  => isset($_COOKIE)  ? $this->dump($_COOKIE)  : null,
     );
   }
 
   /**
-   * 
+   *
    * @return string
    */
   public function formatSubject($title)
@@ -72,9 +72,9 @@ class fpErrorNotifierMessageHelper
   }
 
   /**
-   * 
+   *
    * @param string $title
-   * 
+   *
    * @return string
    */
   public function formatTitle($title)
@@ -89,9 +89,9 @@ class fpErrorNotifierMessageHelper
   }
 
   /**
-   * 
+   *
    * @param mixed $value
-   * 
+   *
    * @return string
    */
   public function formatValue($value)
@@ -102,9 +102,9 @@ class fpErrorNotifierMessageHelper
 
   /**
    * Dump variables. Recursion safe and humanized
-   * 
+   *
    * @param mixed $value
-   * 
+   *
    * @return string
    */
   public function dump(&$varInput, $var_name = '', $reference = '', $method = '=', $sub = false)
@@ -173,7 +173,7 @@ class fpErrorNotifierMessageHelper
   }
 
   /**
-   * 
+   *
    * @return fpErrorNotifier
    */
   protected function notifier()
