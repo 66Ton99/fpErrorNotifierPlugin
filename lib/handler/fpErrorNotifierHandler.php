@@ -81,7 +81,7 @@ class fpErrorNotifierHandler
    */
   public function handleEvent(sfEvent $event)
   {
-    return $this->handleException($event->getSubject());
+    return $this->handleException(new fpErrorNotifierExceptionEvent($event->getSubject()));
   }
 
   /**
@@ -126,7 +126,7 @@ class fpErrorNotifierHandler
    */
   public function handleEventMessage(sfEvent $event)
   {
-    $message = $this->notifier() ->decoratedMessage($event->getSubject());
+    $message = $this->notifier()->decoratedMessage($event->getSubject());
     $message->addSection('Message Details', $event->getParameters());
     $message->addSection('Server', $this->notifier()->helper()->formatServer());
     

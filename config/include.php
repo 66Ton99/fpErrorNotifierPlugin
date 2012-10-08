@@ -16,6 +16,7 @@ require_once $pluginLibDir . '/driver/mail/fpErrorNotifierDriverMailSymfony.php'
 // handlers
 require_once $pluginLibDir . '/handler/fpErrorNotifierHandler.php';
 require_once $pluginLibDir . '/handler/fpErrorNotifierHandlerIgnore.php';
+require_once $pluginLibDir . '/handler/fpErrorNotifierHandlerTest.php';
 
 // messages
 require_once $pluginLibDir . '/message/fpBaseErrorNotifierMessage.php';
@@ -30,6 +31,8 @@ require_once $pluginLibDir . '/decorator/fpErrorNotifierDecoratorText.php';
 // util
 require_once $pluginLibDir . '/util/fpErrorNotifierNullObject.php';
 require_once $pluginLibDir . '/util/fpErrorNotifierErrorCode.php';
+require_once $pluginLibDir . '/util/fpErrorNotifierException.php';
+require_once $pluginLibDir . '/util/fpErrorNotifierExceptionEvent.php';
 
 // connected
 if ($path = sfConfig::get('sf_symfony_lib_dir')) {
