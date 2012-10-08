@@ -80,7 +80,12 @@ class fpErrorNotifierHandler
    */
   public function handleEvent(sfEvent $event)
   {
-    return $this->handleException(new fpErrorNotifierExceptionEvent($event->getSubject()));
+    if ($event->getSubject() instanceof Exception) {
+      $e = $event->getSubject();
+    } else {
+      new fpErrorNotifierExceptionEvent($event->getSubject());
+    }
+    return $this->handleException($e);
   }
 
   /**
