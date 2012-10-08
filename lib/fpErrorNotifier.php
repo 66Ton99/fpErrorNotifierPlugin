@@ -91,12 +91,9 @@ class fpErrorNotifier
    */
   public function decorator(fpBaseErrorNotifierMessage $message)
   {
-    if (!$this->decorator) {
-      $options = sfConfig::get('sf_notify_decorator');
-      $class = $options['class'];
-      $this->decorator = new $class($message);
-    }
-
+    $options = sfConfig::get('sf_notify_decorator');
+    $class = $options['class'];
+    $this->decorator = new $class($message);
     return $this->decorator;
   }
 
@@ -106,28 +103,10 @@ class fpErrorNotifier
    */
   public function driver()
   {
-    if (!$this->driver) {
-      $options = sfConfig::get('sf_notify_driver');
-      $class = $options['class'];
-      $this->driver = new $class($options['options']);
-    }
-
+    $options = sfConfig::get('sf_notify_driver');
+    $class = $options['class'];
+    $this->driver = new $class($options['options']);
     return $this->driver;
-  }
-
-
-  /**
-   *
-   * Reset the driver instance.
-   * Necessary with tasks/workers: the notifier is loaded before
-   * the env is set, so the options loaded are the default options.
-   *
-   * By resetting the driver, after manually erasing sf_notify_driver
-   * with the expected options, this will load the appropriate
-   * driver.
-   */
-  public function resetDriver() {
-    $this->driver = null;
   }
   
   /**
@@ -138,11 +117,9 @@ class fpErrorNotifier
    */
   public function message($title)
   {
-    if (!$this->message) {
-      $options = sfConfig::get('sf_notify_message');
-      $class = $options['class'];
-      $this->message = new $class($title);
-    }
+    $options = sfConfig::get('sf_notify_message');
+    $class = $options['class'];
+    $this->message = new $class($title);
 
     return clone $this->message;
   }
@@ -164,13 +141,10 @@ class fpErrorNotifier
    */
   public function handler()
   {
-    if (!$this->handler) {
-      $options = sfConfig::get('sf_notify_handler');
-      $class = $options['class'];
+    $options = sfConfig::get('sf_notify_handler');
+    $class = $options['class'];
 
-      $this->handler = new $class($this->dispather(), $options['options']);
-    }
-    
+    $this->handler = new $class($this->dispather(), $options['options']);
     return $this->handler;
   }
   
@@ -180,11 +154,9 @@ class fpErrorNotifier
    */
   public function helper()
   {
-    if (!$this->helper) {
-      $options = sfConfig::get('sf_notify_helper');
-      $class = $options['class'];
-      $this->helper = new $class;
-    }
+    $options = sfConfig::get('sf_notify_helper');
+    $class = $options['class'];
+    $this->helper = new $class;
 
     return $this->helper;
   }

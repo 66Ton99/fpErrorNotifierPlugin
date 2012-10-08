@@ -54,7 +54,6 @@ class fpErrorNotifierHandler
   public function initialize()
   {
     if ($this->isInit || 'fpErrorNotifierDriverNull' == get_class($this->notifier()->driver())) return;
-    $configs = sfConfig::get('sf_notify_driver');
     
     $this->memoryReserv = str_repeat('x', 1024 * 500);
     // Registers error handler and it will process the most part of erros (but not all)
@@ -95,7 +94,6 @@ class fpErrorNotifierHandler
    */
   public function handleException(Exception $e)
   {
-    
     $message = $this->notifier()->decoratedMessage($e->getMessage());
     $message->addSection('Exception', $this->notifier()->helper()->formatException($e));
     

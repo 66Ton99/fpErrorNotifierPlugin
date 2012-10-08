@@ -12,4 +12,12 @@ class fpErrorNotifierHandlerTest extends fpErrorNotifierHandler {
   {
     throw $e;
   }
+
+  /**
+   *
+   */
+  public function initialize()
+  {
+
+  }
 }
