@@ -83,7 +83,7 @@ class fpErrorNotifierHandler
     if ($event->getSubject() instanceof Exception) {
       $e = $event->getSubject();
     } else {
-      new fpErrorNotifierExceptionEvent($event->getSubject());
+      $e = new fpErrorNotifierExceptionEvent($event->getSubject());
     }
     return $this->handleException($e);
   }
