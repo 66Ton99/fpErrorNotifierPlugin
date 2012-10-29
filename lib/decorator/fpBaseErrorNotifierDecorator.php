@@ -106,7 +106,7 @@ abstract class fpBaseErrorNotifierDecorator extends fpBaseErrorNotifierMessage
    */
   public function subject()
   {
-    return $this->message->subject();
+    return substr($this->message->subject(), 0, 255) . (255 < strlen($this->message->subject())?'...':'');
   }
   
   /**
