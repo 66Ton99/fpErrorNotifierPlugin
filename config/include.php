@@ -17,6 +17,7 @@ require_once $pluginLibDir . '/driver/mail/fpErrorNotifierDriverMailSymfony.php'
 require_once $pluginLibDir . '/handler/fpErrorNotifierHandler.php';
 require_once $pluginLibDir . '/handler/fpErrorNotifierHandlerIgnore.php';
 require_once $pluginLibDir . '/handler/fpErrorNotifierHandlerTest.php';
+require_once $pluginLibDir . '/handler/fpErrorNotifierHandlerNull.php';
 
 // messages
 require_once $pluginLibDir . '/message/fpBaseErrorNotifierMessage.php';
